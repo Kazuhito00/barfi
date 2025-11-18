@@ -199,6 +199,7 @@ class Block:
             "select",
             "slider",
             "display",
+            "file",
         ], 'Error: Option "type" is not a standard Option interface parameter.'
 
         if name in self._options:

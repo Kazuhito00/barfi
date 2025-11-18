@@ -23,7 +23,8 @@ export type BlockOption =
     | IntegerOption
     | SelectOption
     | SliderOption
-    | DisplayOption;
+    | DisplayOption
+    | FileOption;
 
 export type CheckboxOption = {
     name: string;
@@ -88,6 +89,16 @@ export type DisplayOption = {
     name: string;
     type: "DisplayOption";
     value: string;
+};
+
+export type FileOption = {
+    name: string;
+    type: "FileOption";
+    value: string;
+    accept?: string;
+    properties?: {
+        accept?: string;
+    };
 };
 
 export type FlowStateNodeInterface = {

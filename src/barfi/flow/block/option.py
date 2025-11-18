@@ -137,6 +137,22 @@ class BlockOption:
             ), "Error: For display option, 'value' must be of type string."
             return cls(name=name, type="DisplayOption", value=value)
 
+        elif type == "file":
+            value = kwargs.get("value", "")
+            accept = kwargs.get("accept", "*")
+            assert isinstance(
+                value, str
+            ), "Error: For file option, 'value' must be of type string."
+            assert isinstance(
+                accept, str
+            ), "Error: For file option, 'accept' must be of type string."
+            return cls(
+                name=name,
+                type="FileOption",
+                value=value,
+                properties={"accept": accept}
+            )
+
         else:
             raise ValueError(
                 "Error: No valid option type passed to the add_option method."

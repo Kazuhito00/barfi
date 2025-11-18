@@ -7,6 +7,7 @@ import { FlowInput } from "@/components/ui/input";
 import { FlowNumber } from "@/components/ui/input";
 import { FlowSelect } from "@/components/ui/select";
 import { FlowSlider } from "@/components/ui/slider";
+import { FlowFileInput } from "@/components/ui/file-input";
 import {
     useFlowStateStore,
     NodeDataActions,
@@ -90,6 +91,17 @@ const renderOption = (
         case "DisplayOption":
             return (
                 <div className="w-full text-center text-xs">{option.value}</div>
+            );
+        case "FileOption":
+            return (
+                <FlowFileInput
+                    key={idx}
+                    id={option.name}
+                    label={option.name}
+                    defaultValue={option.value}
+                    accept={option.properties?.accept || "*"}
+                    onChange={(filePath) => handleChange(filePath)}
+                />
             );
         default:
             return null;
