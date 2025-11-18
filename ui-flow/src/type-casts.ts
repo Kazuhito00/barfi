@@ -10,6 +10,8 @@ export function convertFlowConnectionsToEdges(
         sourceHandle: conn.outputNodeInterface,
         target: conn.inputNode,
         targetHandle: conn.inputNodeInterface,
+        deletable: true,
+        selectable: true,
     }));
 }
 
@@ -55,6 +57,8 @@ export function convertFlowNodesToNodes(
             },
             position: _node.position,
             measured: _node.measured,
+            deletable: true,
+            selectable: true,
         };
     });
 }

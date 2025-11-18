@@ -48,6 +48,8 @@ function ContextMenuNodeItem({ blockData }: { blockData: BaseBlock }) {
                             x: flowPos.x,
                             y: flowPos.y,
                         },
+                        deletable: true,
+                        selectable: true,
                     },
                 ]);
                 addNodeToStore(nodeId, blockData);

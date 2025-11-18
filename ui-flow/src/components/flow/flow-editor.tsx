@@ -60,14 +60,14 @@ export default function FlowEditor({
                         (edge) => edge.id !== existingConnection.id
                     );
                     return addEdge(
-                        { ...params, animated: true, id: `edge__${uuid()}` },
+                        { ...params, animated: true, id: `edge__${uuid()}`, deletable: true, selectable: true },
                         filteredEdges
                     );
                 }
 
                 // No existing connection, just add the new edge
                 return addEdge(
-                    { ...params, animated: true, id: `edge__${uuid()}` },
+                    { ...params, animated: true, id: `edge__${uuid()}`, deletable: true, selectable: true },
                     eds
                 );
             }),
@@ -97,11 +97,16 @@ export default function FlowEditor({
                         fitViewOptions={{ padding: 0.75 }}
                         proOptions={{ hideAttribution: true }}
                         nodesDraggable
+                        nodesConnectable
+                        elementsSelectable
+                        selectNodesOnDrag={false}
                         minZoom={0}
+                        deleteKeyCode="Delete"
                         onDelete={({ nodes }) => {
                             nodes.forEach((node) => {
                                 delNodeFromStore(node.id);
                             });
+                            // Edges are handled automatically by onEdgesChange
                         }}
                     >
                         <Background color="#aaa" gap={16} />
