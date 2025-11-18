@@ -30,6 +30,7 @@ export default function FlowEditor({
     onNodesChange,
     onEdgesChange,
     baseBlocks,
+    commands,
 }: {
     nodes: Node[];
     edges: Edge[];
@@ -37,6 +38,7 @@ export default function FlowEditor({
     onNodesChange: OnNodesChange<Node>;
     onEdgesChange: OnEdgesChange<Edge>;
     baseBlocks: BaseBlock[] | Record<string, BaseBlock[]>;
+    commands: string[];
 }) {
     const setContextLocation = useFlowStateStore(
         (state) => state.setContextLocation
@@ -115,6 +117,7 @@ export default function FlowEditor({
                         <Panel position="bottom-right">
                             <PanelRun
                                 onClickRun={Streamlit.setComponentValue}
+                                commands={commands}
                             />
                         </Panel>
                     </ReactFlow>

@@ -50,6 +50,7 @@ export function App({ args }: { args: BarfiState }) {
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 baseBlocks={args.blocks}
+                commands={args.commands}
             />
         </div>
     );

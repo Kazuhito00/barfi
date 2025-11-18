@@ -53,8 +53,21 @@ function constructFlowState(
     };
 }
 
+// Map command names to their display properties
+const commandConfig: Record<string, { label: string; icon: React.ReactNode }> = {
+    execute: {
+        label: "Execute",
+        icon: <PlayIcon className="w-3.5 h-3.5" />,
+    },
+    save: {
+        label: "Save",
+        icon: <StarIcon className="w-3.5 h-3.5" />,
+    },
+};
+
 export default function PanelRun({
     onClickRun,
+    commands = ["execute", "save"],
 }: {
     onClickRun: ({
         command,
@@ -67,63 +80,42 @@ export default function PanelRun({
             viewport: Viewport;
         };
     }) => void;
+    commands?: string[];
 }) {
     const { getNodes, getEdges, getViewport } = useReactFlow();
     const getNodesOptionDataFromStore = useFlowStateStore(
         (state) => state.getNodesOptionData
     );
+
+    const handleCommand = (command: string) => {
+        onClickRun({
+            command: command,
+            editor_schema: constructFlowState(
+                getNodes(),
+                getEdges(),
+                getViewport(),
+                getNodesOptionDataFromStore()
+            ),
+        });
+    };
+
     return (
         <div className="flex flex-row gap-2 text-sm text-white">
-            <button
-                className="flex items-center px-2 py-1 rounded-sm shadow-md bg-gray-600 gap-1"
-                onClick={() => {
-                    onClickRun({
-                        command: "execute",
-                        editor_schema: constructFlowState(
-                            getNodes(),
-                            getEdges(),
-                            getViewport(),
-                            getNodesOptionDataFromStore()
-                        ),
-                    });
-                }}
-            >
-                <span>
-                    <PlayIcon className="w-3.5 h-3.5" />
-                </span>
-                <span>Execute</span>
-            </button>
-            <button
-                className="flex items-center px-2 py-1 rounded-sm shadow-md bg-gray-600 gap-1"
-                onClick={() => {
-                    onClickRun({
-                        command: "save",
-                        editor_schema: constructFlowState(
-                            getNodes(),
-                            getEdges(),
-                            getViewport(),
-                            getNodesOptionDataFromStore()
-                        ),
-                    });
-                }}
-            >
-                <span>
-                    <StarIcon className="w-3.5 h-3.5" />
-                </span>
-                <span>Save</span>
-            </button>
-            {/* TODO: Not implemented to prevent clear of the complete editor by mistake */}
-            {/* <button
-                className="flex items-center px-2 py-1 rounded-sm shadow-md bg-gray-600 gap-1"
-                onClick={() => {
-                    console.log("first");
-                }}
-            >
-                <span>
-                    <ResetIcon className="w-3.5 h-3.5" />
-                </span>
-                <span>Reset</span>
-            </button> */}
+            {commands.map((command) => {
+                const config = commandConfig[command];
+                if (!config) return null;
+
+                return (
+                    <button
+                        key={command}
+                        className="flex items-center px-2 py-1 rounded-sm shadow-md bg-gray-600 gap-1"
+                        onClick={() => handleCommand(command)}
+                    >
+                        <span>{config.icon}</span>
+                        <span>{config.label}</span>
+                    </button>
+                );
+            })}
         </div>
     );
 }

@@ -135,4 +135,5 @@ export type BarfiState = {
         connections: FlowStateConnection[];
         viewport: Viewport;
     };
+    commands: string[];
 };
