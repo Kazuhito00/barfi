@@ -11,6 +11,12 @@ Please note that this is *not* the official repository.**
 * st_flow() の `commands`引数が適切に機能するように変更<br>Modify it so that the `commands` argument in st_flow() functions properly
 * ファイルアップロードブロックを追加<br>Add a file block
 * 実装例を追加<br>Add an implementation example
+* Colaboratory上での動作例を追加<br>Add an example of running it on Google Colaboratory<br>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Kazuhito00/barfi/blob/main/example/barfi_colab.ipynb)<br>
+
+## Install
+```python
+pip install "barfi[streamlit] @ git+https://github.com/Kazuhito00/barfi"
+```
 
 <br>
 
