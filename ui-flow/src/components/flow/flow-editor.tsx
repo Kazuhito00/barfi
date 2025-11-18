@@ -13,6 +13,7 @@ import {
     Node,
     OnNodesChange,
     OnEdgesChange,
+    OnConnect,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import PanelContextMenu from "@/components/flow/context-menu";
@@ -42,15 +43,34 @@ export default function FlowEditor({
     );
     const delNodeFromStore = useFlowStateStore((state) => state.delNode);
 
-    const onConnect = useCallback(
-        // @ts-expect-error params is not used
+    const onConnect: OnConnect = useCallback(
         (params) =>
-            setEdges((eds) =>
-                addEdge(
+            setEdges((eds) => {
+                // Check if the target input already has a connection
+                const existingConnection = eds.find(
+                    (edge) =>
+                        edge.target === params.target &&
+                        edge.targetHandle === params.targetHandle
+                );
+
+                // If an input already has a connection, remove it before adding the new one
+                // This ensures only one output can be connected to an input at a time
+                if (existingConnection) {
+                    const filteredEdges = eds.filter(
+                        (edge) => edge.id !== existingConnection.id
+                    );
+                    return addEdge(
+                        { ...params, animated: true, id: `edge__${uuid()}` },
+                        filteredEdges
+                    );
+                }
+
+                // No existing connection, just add the new edge
+                return addEdge(
                     { ...params, animated: true, id: `edge__${uuid()}` },
                     eds
-                )
-            ),
+                );
+            }),
         [setEdges]
     );
 
