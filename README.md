@@ -1,5 +1,23 @@
 <img src="/assets/logo.png" width="100px" alt="Barfi Logo">
 
+# This repository is a fork of [krish-adi/barfi](https://github.com/krish-adi/barfi)
+
+**このリポジトリは [krish-adi/barfi](https://github.com/krish-adi/barfi) のフォークです<br>オリジナルのリポジトリでのIssue対応やPR対応が停止しているため、バグ修正、改善、機能追加などを行っています<br>※公式のリポジトリではないことに注意ください<br><br>This repository is a fork of [krish-adi/barfi](https://github.com/krish-adi/barfi)<br>Since issue and pull request activity has stopped in the original repository, this fork provides bug fixes, improvements, and new features.  
+Please note that this is *not* the official repository.**
+
+## Enhancements in this fork
+* ブロック間の接続が 1 対 1 に制限されるように変更<br>Modify it so that connections between blocks are limited to one-to-one
+* ブロックと接続をDeleteキーで削除できるように修正<br>Modify it so that blocks and connections can be deleted with the Delete key
+* st_flow() の `commands`引数が適切に機能するように変更<br>Modify it so that the `commands` argument in st_flow() functions properly
+* ファイルアップロードブロックを追加<br>Add a file block
+* 実装例を追加<br>Add an implementation example
+
+<br>
+
+---
+
+<br>
+
 # Welcome to Barfi ! 👋
 
 **A Python visual Flow Based Programming library to buld workflows that integrates into existing codebases.**
