@@ -2,7 +2,7 @@
 
 # This repository is a fork of [krish-adi/barfi](https://github.com/krish-adi/barfi)
 
-**このリポジトリは [krish-adi/barfi](https://github.com/krish-adi/barfi) のフォークです<br>オリジナルのリポジトリでのIssue対応やPR対応が停止しているため、バグ修正、機能追加などを行っています<br>※公式のリポジトリではないことに注意ください<br><br>This repository is a fork of [krish-adi/barfi](https://github.com/krish-adi/barfi)<br>Since issue and pull request activity has stopped in the original repository, this fork provides bug fixes, and new features.  
+**このリポジトリは [krish-adi/barfi](https://github.com/krish-adi/barfi) のフォークです<br>オリジナルのリポジトリでのIssue対応やPR対応が停止しているため、個人的に必要な機能追加、バグ修正などを行っています<br>※公式のリポジトリではないことに注意ください<br><br>This repository is a fork of [krish-adi/barfi](https://github.com/krish-adi/barfi)<br>Since issue and pull-request activity has stopped in the original project, I am adding the features I personally need and applying bug fixes in this fork..  
 Please note that this is *not* the official repository.**
 
 <details>
